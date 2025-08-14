@@ -1,0 +1,35 @@
+
+
+* {
+  font-family: Arial, sans-serif;
+  color: gray;
+}
+
+
+h1, p {
+  background-color: lightyellow;
+  padding: 10px;
+}
+
+
+.highlight {
+  background-color: lightblue;
+  color: darkblue;
+  font-weight: bold;
+}
+
+
+#main-heading {
+  background-color: orange;
+  color: white;
+  text-align: center;
+}
+
+
+p {
+  color: green; 
+}
+
+.highlight {
+  color: red;
+}

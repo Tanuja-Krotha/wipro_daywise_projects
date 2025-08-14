@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form>
+    
+    <label>Roll no. :</label>
+    <input type="text" name="roll_no"><br><br>
+
+    <label>Student name :</label>
+    <input type="text" name="first_name" placeholder="First Name">
+    -
+    <input type="text" name="last_name" placeholder="Last Name"><br><br>
+
+    <label>Father's name :</label>
+    <input type="text" name="father_name"><br><br>
+
+    <label>Date of birth :</label>
+    <input type="text" name="day" placeholder="Day">
+    -
+    <input type="text" name="month" placeholder="Month">
+    -
+    <input type="text" name="year" placeholder="Year">
+    (DD-MM-YYYY)<br><br>
+
+    <label>Mobile no. :</label>
+    +91 <input type="text" name="mobile"><br><br>
+
+    <label>Email id :</label>
+    <input type="email" name="email"><br><br>
+
+    <label>Password :</label>
+    <input type="password" name="password"><br><br>
+
+    <label>Gender :</label>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female<br><br>
+
+    <label>Department :</label>
+    <input type="checkbox" name="dept" value="CSE"> CSE
+    <input type="checkbox" name="dept" value="IT"> IT
+    <input type="checkbox" name="dept" value="ECE"> ECE
+    <input type="checkbox" name="dept" value="Civil"> Civil
+    <input type="checkbox" name="dept" value="Mech"> Mech<br><br>
+
+    <label>Course :</label>
+    <select name="course">
+        <option>---------------- Select Current Course's ----------------</option>
+        <option>B.Tech</option>
+        <option>B.Sc</option>
+        <option>BCA</option>
+        <option>M.Tech</option>
+        <option>MCA</option>
+    </select><br><br>
+
+    <label>Student photo :</label>
+    <input type="file" name="photo"><br><br>
+
+    <label>City :</label>
+    <input type="text" name="city"><br><br>
+
+    <label>Address :</label>
+    <textarea name="address" rows="3" cols="30"></textarea><br><br>
+
+    <input type="submit" value="Register">
+</form>
+
+</body>
+</html>

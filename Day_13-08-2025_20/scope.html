@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>var, let, const Scope Example</title>
+</head>
+<body>
+
+<h2>Check the console for output</h2>
+
+<script>
+    
+    var globalVar = "I am var in global scope";
+    let globalLet = "I am let in global scope";
+    const globalConst = "I am const in global scope";
+
+    console.log("Global var:", globalVar);
+    console.log("Global let:", globalLet);
+    console.log("Global const:", globalConst);
+
+    function testScopes() {
+        
+        var functionVar = "I am var in function scope";
+        let functionLet = "I am let in function scope";
+        const functionConst = "I am const in function scope";
+
+        console.log("Inside function - var:", functionVar);
+        console.log("Inside function - let:", functionLet);
+        console.log("Inside function - const:", functionConst);
+
+        if (true) {
+            
+            var blockVar = "I am var in block (NO block scope)";
+            let blockLet = "I am let in block";
+            const blockConst = "I am const in block";
+
+            console.log("Inside block - var:", blockVar);
+            console.log("Inside block - let:", blockLet);
+            console.log("Inside block - const:", blockConst);
+        }
+
+        console.log("Outside block (inside function) - var:", blockVar); 
+    }
+
+    testScopes();
+
+    
+    var globalVar = "Var can be redeclared and reassigned";
+    globalLet = "Let can be reassigned but not redeclared";
+   
+
+    console.log("After reassignment:");
+    console.log(globalVar);
+    console.log(globalLet);
+    console.log(globalConst);
+</script>
+
+</body>
+</html>

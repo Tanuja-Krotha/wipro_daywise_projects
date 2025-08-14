@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Blog</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: #0077cc;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      width: 30%;
+      height: 20%;
+      border-radius: 5px;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav a {
+      font-weight: bold;
+      color: #333;
+    }
+    nav a:hover {
+      color: #0077cc;
+    }
+
+    
+    .hero {
+      background: url('bg.jpg') center/cover no-repeat;
+      color: rgb(216, 24, 24);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+   
+    .container {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+   
+    .content section {
+      margin-bottom: 30px;
+    }
+    .cta {
+      display: inline-block;
+      background-color: #0077cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .cta:hover {
+      background-color: #005fa3;
+    }
+
+   
+    .sidebar {
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .about img {
+      width: 100px;
+      border-radius: 50%;
+    }
+    .social-links a {
+      margin-right: 10px;
+      color: #0077cc;
+    }
+    .recent-posts ul {
+      padding-left: 20px;
+    }
+
+    
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    footer .social-links a {
+      margin: 0 10px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Blog</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  
+  <section class="hero">
+    <h1>Exploring the Art of Minimalism</h1>
+    <p class="meta">By Jane Doe | August 12, 2025</p>
+  </section>
+
+  
+  <div class="container">
+    <main class="content">
+      <p>Minimalism is more than just a design trend — it's a way of life. In this post, we explore how minimalism can bring clarity and focus to your daily routine.</p>
+
+      <section>
+        <h2>What is Minimalism?</h2>
+        <p>Minimalism is about stripping away the unnecessary to focus on what truly matters. It can be applied to design, lifestyle, and even work habits.</p>
+        <img src="mini.webp" alt="Minimal design example">
+      </section>
+
+      <section>
+        <h2>Benefits of a Minimalist Lifestyle</h2>
+        <p>From reducing stress to saving money, minimalism offers a variety of benefits. It encourages intentionality and mindfulness.</p>
+        <img src="mini.webp" alt="Minimalist home">
+      </section>
+
+      <section>
+        <h2>How to Start Your Minimalism Journey</h2>
+        <p>Begin by decluttering your home, simplifying your schedule, and focusing on your top priorities.</p>
+        <img src="mini.webp" alt="Decluttering process">
+      </section>
+
+      <a href="#" class="cta">Start Your Journey</a>
+    </main>
+
+    
+    <aside class="sidebar">
+      <div class="about">
+        <h3>About the Author</h3>
+        <img src="writer.webp" alt="Author">
+        <p>Jane Doe is a writer and minimalist enthusiast who helps people live with less and focus on what matters most.</p>
+        <div class="social-links">
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="recent-posts">
+        <h3>Recent Posts</h3>
+        <ul>
+          <li><a href="#">5 Ways to Simplify Your Life</a></li>
+          <li><a href="#">Minimalist Workspace Ideas</a></li>
+          <li><a href="#">The Power of Decluttering</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Minimal Blog. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>

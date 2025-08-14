@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Image Gallery</title>
+</head>
+<body>
+  <img id="gallery" src="" width="500" height="500">
+  <br><br>
+  <button onclick="prevImage()">Prev</button>
+  <button onclick="nextImage()">Next</button>
+
+  <script>
+    let images = [
+      "s1.jfif",
+      "s2.webp",
+      "s3.webp",
+      "s4.jpg",
+      "s5.jpg"
+    ];
+    let index = 0;
+
+    document.getElementById("gallery").src = images[index];
+
+    function nextImage() {
+      index++;
+      if (index >= images.length) {
+        index = 0; // back to first image
+      }
+      document.getElementById("gallery").src = images[index];
+    }
+
+    function prevImage() {
+      index--;
+      if (index < 0) {
+        index = images.length - 1; // go to last image
+      }
+      document.getElementById("gallery").src = images[index];
+    }
+  </script>
+</body>
+</html>

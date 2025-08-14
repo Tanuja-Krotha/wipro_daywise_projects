@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 5px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Enter text (max 50 characters)</h3>
+    <textarea id="myTextbox" maxlength="50" rows="4" cols="50"></textarea>
+    <label id="charCount">50 characters remaining</label>
+
+    <script>
+        const textbox = document.getElementById('myTextbox');
+        const charCount = document.getElementById('charCount');
+        const maxLength = 50;
+
+        textbox.addEventListener('input', function() {
+            const remaining = maxLength - textbox.value.length;
+            charCount.textContent = `${remaining} characters remaining`;
+        });
+    </script>
+
+</body>
+</html>

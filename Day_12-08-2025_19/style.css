@@ -1,0 +1,32 @@
+
+.container {
+  width: 400px;
+  height: 200px;
+  border: 2px solid black;
+  padding: 10px;
+  position: relative;
+}
+
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bold;
+}
+
+
+.box1 {
+  background-color: lightcoral;
+  margin-left: 20px;
+  margin-top: 20px; 
+}
+
+
+.box2 {
+  background-color: lightgreen;
+  margin-left: 150px; 
+  margin-top: -60px;  
+}

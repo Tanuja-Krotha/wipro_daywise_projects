@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 0.85em;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm" novalidate>
+        <label>Email:</label>
+        <input type="text" id="email" placeholder="Enter your email">
+        <div id="emailError" class="error"></div>
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter your password">
+        <div id="passwordError" class="error"></div>
+
+        <button type="button" onclick="validateForm()">Login</button>
+    </form>
+</div>
+
+<script>
+    const emailField = document.getElementById('email');
+    const passwordField = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+
+    
+    function validateEmail() {
+        const emailValue = emailField.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailValue === "") {
+            emailError.textContent = "Email cannot be empty";
+            return false;
+        } else if (!emailPattern.test(emailValue)) {
+            emailError.textContent = "Invalid email format";
+            return false;
+        } else {
+            emailError.textContent = "";
+            return true;
+        }
+    }
+
+    
+    function validatePassword() {
+        const passwordValue = passwordField.value.trim();
+
+        if (passwordValue === "") {
+            passwordError.textContent = "Password cannot be empty";
+            return false;
+        } else {
+            passwordError.textContent = "";
+            return true;
+        }
+    }
+
+    
+    function validateForm() {
+        const isEmailValid = validateEmail();
+        const isPasswordValid = validatePassword();
+
+        if (isEmailValid && isPasswordValid) {
+            alert("Login successful!");
+        }
+    }
+
+    
+    emailField.addEventListener('blur', validateEmail);
+    passwordField.addEventListener('blur', validatePassword);
+</script>
+
+</body>
+</html>

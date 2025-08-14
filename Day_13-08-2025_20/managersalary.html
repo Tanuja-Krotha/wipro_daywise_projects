@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Total Salary of Managers</title>
+</head>
+<body>
+
+<h2>Total Salary Drawn by Managers</h2>
+<p id="totalSalary"></p>
+
+<script>
+    
+    const employees = [
+        { name: "Alice", role: "Manager", empId: 101, salary: 80000 },
+        { name: "Bob", role: "Developer", empId: 102, salary: 50000 },
+        { name: "Charlie", role: "Manager", empId: 103, salary: 90000 },
+        { name: "David", role: "QA", empId: 104, salary: 45000 },
+        { name: "Eva", role: "Manager", empId: 105, salary: 85000 }
+    ];
+
+    
+    const totalManagerSalary = employees
+        .filter(emp => emp.role === "Manager")
+        .reduce((total, emp) => total + emp.salary, 0);
+
+    
+    document.getElementById("totalSalary").textContent =
+        `Total salary drawn by Managers: ₹${totalManagerSalary}`;
+
+    console.log("Total Salary of Managers:", totalManagerSalary);
+</script>
+
+</body>
+</html>

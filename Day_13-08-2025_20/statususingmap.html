@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Status to Persons (Using map)</title>
+</head>
+<body>
+
+<h2>Person List with Status</h2>
+<pre id="output"></pre>
+
+<script> 
+   
+    const people = [
+        { name: "John", age: 17, city: "New York" },
+        { name: "Sarah", age: 25, city: "Los Angeles" },
+        { name: "Michael", age: 19, city: "Chicago" },
+        { name: "Anna", age: 16, city: "Houston" },
+        { name: "David", age: 30, city: "Miami" }
+    ];
+
+    const updatedPeople = people.map(person => {
+        return { 
+            ...person, 
+            status: person.age >= 18 ? "Adult" : "Minor"
+        };
+    });
+
+    
+    document.getElementById("output").textContent =
+        JSON.stringify(updatedPeople, null, 2);
+
+    console.log(updatedPeople);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Dropdown</title>
+</head>
+<body>
+
+<h2>City Dropdown Example</h2>
+<button onclick="populateDropdown()">Load Cities</button>
+<select id="cityDropdown">
+    <option value="">--Select City--</option>
+</select>
+
+<script>
+    
+    const cities = ["Mumbai", "Delhi", "Bangalore", "Chennai", "Hyderabad", "Kolkata"];
+
+    function populateDropdown() {
+        const dropdown = document.getElementById("cityDropdown");
+
+        
+        dropdown.length = 1;
+
+        
+        const sortedCities = [...cities].sort();
+
+        
+        sortedCities.forEach(city => {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+            dropdown.appendChild(option);
+        });
+    }
+</script>
+
+</body>
+</html>

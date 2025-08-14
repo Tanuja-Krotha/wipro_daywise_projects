@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #feedback {
+            font-weight: bold;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quiz App</h1>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div id="feedback"></div>
+    <div>Score: <span id="score">0</span></div>
+    <br>
+    <button onclick="nextQuestion()">Next Question</button>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
