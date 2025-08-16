@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rest Operator Examples</title>
+</head>
+<body>
+    <h2>Check Console for Output</h2>
+
+    <script>
+        // Ex10: 
+        function sumNumbers(...numbers) {
+            return numbers.reduce((sum, num) => sum + num, 0);
+        }
+        console.log("Sum:", sumNumbers(10, 20, 30, 40));
+
+        // Ex11: 
+        function separateFirstRest(...args) {
+            return {
+                first: args[0],
+                rest: args.slice(1)
+            };
+        }
+        console.log("Separate:", separateFirstRest(1, 2, 3, 4, 5));
+    </script>
+</body>
+</html>

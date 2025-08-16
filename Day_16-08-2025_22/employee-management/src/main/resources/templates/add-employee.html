@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Employee</title>
+</head>
+<body>
+<h2>Add Employee</h2>
+
+<form th:action="@{/employees/add}" th:object="${employee}" method="post">
+
+    <!-- Employee Name -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required/><br><br>
+
+    <!-- Employee Email -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required/><br><br>
+
+    <!-- Employee Type -->
+    <label for="type">Type:</label>
+    <input type="text" id="type" th:field="*{type}" required/><br><br>
+
+    <!-- Address Fields -->
+    <h3>Address</h3>
+
+    <label for="street">Street:</label>
+    <input type="text" id="street" th:field="*{address.street}" required/><br><br>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" th:field="*{address.city}" required/><br><br>
+
+    <label for="state">State:</label>
+    <input type="text" id="state" th:field="*{address.state}" required/><br><br>
+
+    <label for="zipcode">Zipcode:</label>
+    <input type="text" id="zipcode" th:field="*{address.zipcode}" required/><br><br>
+
+    <!-- Department Selection -->
+    <label for="department">Department:</label>
+    <select id="department" th:field="*{department.id}">
+        <option th:each="dept : ${departments}"
+                th:value="${dept.id}"
+                th:text="${dept.name}">
+        </option>
+    </select><br><br>
+
+    <button type="submit">Save Employee</button>
+</form>
+
+</body>
+</html>

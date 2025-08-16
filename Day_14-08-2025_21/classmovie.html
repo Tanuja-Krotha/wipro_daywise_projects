@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Object Destructuring</title>
+</head>
+<body>
+    <h2>Movie Details</h2>
+    <p id="output"></p>
+
+    <script>
+        const movie = {
+            movieName: "Inception",
+            movieLanguage: "English",
+            imdbRating: 8.8
+        };
+
+        const { movieName, movieLanguage, imdbRating } = movie;
+        
+        document.getElementById("output").innerHTML =
+            `<strong>Movie Name:</strong> ${movieName} <br>
+             <strong>Language:</strong> ${movieLanguage} <br>
+             <strong>IMDB Rating:</strong> ${imdbRating}`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Util Functions Demo</title>
+    <script src="classutil.js"></script> <!-- Link to JS file -->
+</head>
+<body>
+    <h2>Util Functions Demo</h2>
+
+    <p id="output"></p>
+
+    <script>
+        let output = "";
+        output += "Today's Date: " + util.getDate() + "<br>";
+        output += "PI Value: " + util.getPIValue() + "<br>";
+        output += "25°C in Fahrenheit: " + util.convertC2F(25) + "<br>";
+        output += "First 5 Fibonacci Numbers: " + util.getFibonacci(5).join(", ");
+
+        document.getElementById("output").innerHTML = output;
+    </script>
+</body>
+</html>

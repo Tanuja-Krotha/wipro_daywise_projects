@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank & Vehicle Demo</title>
+    <script src="bank.js"></script>
+    <script src="vehicle.js"></script>
+</head>
+<body>
+    <h2>Bank Account Demo</h2>
+    <p id="bankOutput"></p>
+    <button onclick="depositMoney()">Deposit 500</button>
+    <button onclick="withdrawMoney()">Withdraw 300</button>
+
+    <h2>Vehicle Demo</h2>
+    <p id="vehicleOutput"></p>
+
+    <script>
+        
+        function depositMoney() {
+            document.getElementById("bankOutput").innerText = account.deposit(500);
+        }
+
+        function withdrawMoney() {
+            document.getElementById("bankOutput").innerText = account.withdraw(300);
+        }
+
+        document.getElementById("vehicleOutput").innerText = myCar.getInfo();
+    </script>
+</body>
+</html>

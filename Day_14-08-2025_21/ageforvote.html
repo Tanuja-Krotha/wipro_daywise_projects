@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eligible Voters</title>
+</head>
+<body>
+
+<h2>Eligible Voters</h2>
+<ul id="voterList"></ul>
+
+<script>
+    
+    const people = [
+        { name: "John", age: 17, city: "New York" },
+        { name: "Sarah", age: 25, city: "Los Angeles" },
+        { name: "Michael", age: 19, city: "Chicago" },
+        { name: "Anna", age: 16, city: "Houston" },
+        { name: "David", age: 30, city: "Miami" }
+    ];
+
+   
+    const eligibleVoters = people.filter(person => person.age >= 18);
+    const list = document.getElementById("voterList");
+    eligibleVoters.forEach(person => {
+        const li = document.createElement("li");
+        li.textContent = `${person.name} (${person.age}) - ${person.city}`;
+        list.appendChild(li);
+    });
+
+    console.log("Eligible Voters:", eligibleVoters);
+</script>
+
+</body>
+</html>
