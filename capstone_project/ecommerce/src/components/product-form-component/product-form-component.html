@@ -1,0 +1,134 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h3>{{ isEditMode ? 'Edit' : 'Create' }} Product</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            
+            <!-- Name Field -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Product Name *</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                formControlName="name"
+                [class.is-invalid]="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+              @if (productForm.get('name')?.invalid && productForm.get('name')?.touched) {
+                <div class="invalid-feedback">
+                  @if (productForm.get('name')?.errors?.['required']) {
+                    <div>Product name is required</div>
+                  }
+                  @if (productForm.get('name')?.errors?.['minlength']) {
+                    <div>Product name must be at least 3 characters</div>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Description Field -->
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                class="form-control"
+                id="description"
+                formControlName="description"
+                rows="3"></textarea>
+            </div>
+
+            <!-- Price Field -->
+            <div class="mb-3">
+              <label for="price" class="form-label">Price *</label>
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                formControlName="price"
+                min="0"
+                step="0.01"
+                [class.is-invalid]="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+              @if (productForm.get('price')?.invalid && productForm.get('price')?.touched) {
+                <div class="invalid-feedback">
+                  @if (productForm.get('price')?.errors?.['required']) {
+                    <div>Price is required</div>
+                  }
+                  @if (productForm.get('price')?.errors?.['min']) {
+                    <div>Price must be greater than 0</div>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Quantity Field -->
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantity *</label>
+              <input
+                type="number"
+                class="form-control"
+                id="quantity"
+                formControlName="quantity"
+                min="0"
+                [class.is-invalid]="productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched">
+              @if (productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched) {
+                <div class="invalid-feedback">
+                  @if (productForm.get('quantity')?.errors?.['required']) {
+                    <div>Quantity is required</div>
+                  }
+                  @if (productForm.get('quantity')?.errors?.['min']) {
+                    <div>Quantity must be 0 or greater</div>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Image URL Field - THIS IS THE IMPORTANT PART -->
+            <div class="mb-3">
+              <label for="imageUrl" class="form-label">Image URL</label>
+              <input
+                type="url"  
+                class="form-control"
+                id="imageUrl"
+                formControlName="imageUrl"
+                placeholder="https://example.com/image.jpg">
+              
+              <!-- Image Preview -->
+              @if (imagePreview) {
+                <div class="mt-2">
+                  <label class="form-label">Image Preview</label>
+                  <div class="image-preview-container">
+                    <img [src]="imagePreview" alt="Product preview" class="img-thumbnail preview-image"
+                         (error)="handleImageError($event)">
+                  </div>
+                </div>
+              }
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-flex gap-2">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="isLoading || productForm.invalid">
+                @if (isLoading) {
+                  <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                }
+                {{ isEditMode ? 'Update' : 'Create' }} Product
+              </button>
+              
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="onCancel()"
+                [disabled]="isLoading">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

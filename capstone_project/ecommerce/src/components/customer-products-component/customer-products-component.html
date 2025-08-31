@@ -1,0 +1,77 @@
+<div class="customer-products-container">
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <h2>Our Products</h2>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group">
+        <input 
+          type="text" 
+          class="form-control"
+          placeholder="Search products by name or description..."
+          [value]="searchTerm"
+          (input)="searchTerm = $any($event.target).value; filterProducts()">
+        <span class="input-group-text">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    @for (product of filteredProducts; track product.id) {
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 product-card">
+          <div class="product-image-container">
+            @if (product.imageUrl) {
+              <!-- Directly use the image URL -->
+              <img [src]="product.imageUrl" [alt]="product.name" class="card-img-top product-image"
+                   (error)="handleImageError($event)">
+            } @else {
+              <div class="card-img-top product-image placeholder">
+                <i class="fas fa-image"></i>
+                <span>No Image</span>
+              </div>
+            }
+            @if (product.quantity === 0) {
+              <div class="out-of-stock-badge">Out of Stock</div>
+            }
+          </div>
+          
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text text-muted product-description">{{ product.description }}</p>
+            <p class="card-text product-price">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+            <p class="card-text" [class.text-warning]="product.quantity > 0 && product.quantity <= 5" 
+               [class.text-success]="product.quantity > 5">
+              @if (product.quantity === 0) {
+                <span class="text-danger">Out of Stock</span>
+              } @else {
+                {{ product.quantity }} in stock
+              }
+            </p>
+          </div>
+          
+          <div class="card-footer">
+            <button 
+              class="btn btn-primary w-100" 
+              (click)="addToCart(product)" 
+              [disabled]="product.quantity === 0">
+              @if (product.quantity === 0) {
+                Out of Stock
+              } @else {
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              }
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (filteredProducts.length === 0) {
+    <div class="text-center py-5">
+      <p class="text-muted">No products found matching your search.</p>
+    </div>
+  }
+</div>
