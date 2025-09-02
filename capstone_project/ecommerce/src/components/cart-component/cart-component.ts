@@ -45,7 +45,32 @@ export class CartComponent implements OnInit{
         this.isLoading = false;
       }
     });
-  }
+ }
+
+
+
+// loadCartItems(): void {
+//     this.authService.getCurrentUser().subscribe({
+//       next: (user) => {
+//         if (user && user.id) {
+//           this.userId = user.id;
+//           this.cartService.getCartByUserId(user.id).subscribe({
+//             next: (items) => {
+//               this.cartItems = items;
+//               this.isLoading = false;
+//             },
+//             error: (err) => {
+//               console.error('Error loading cart items', err);
+//               this.isLoading = false;
+//             }
+//           });
+//         }
+//       },
+//       error: () => {
+//         this.isLoading = false;
+//       }
+//     });
+//   }
 
   incrementQuantity(item: CartItem): void {
     if (item.id) {
@@ -121,6 +146,30 @@ export class CartComponent implements OnInit{
     });
   }
   
+  
+  // checkout(): void {
+  //   if (!this.userId) {
+  //     alert('Please login to checkout');
+  //     return;
+  //   }
+
+  //   // Call the order service to create an order
+  //   // You'll need to implement OrderService.createOrder(userId)
+  //   alert('Checkout functionality would be implemented here!');
+    
+  //   // Clear cart after successful checkout
+  //   this.cartService.clearCart(this.userId).subscribe({
+  //     next: () => {
+  //       this.cartItems = [];
+  //       alert('Order placed successfully!');
+  //       this.router.navigate(['/orders']);
+  //     },
+  //     error: (err) => {
+  //       console.error('Error during checkout', err);
+  //       alert('Error during checkout: ' + err.message);
+  //     }
+  //   });
+  // }
 
   updateQuantity(item: CartItem, quantity: number): void {
     if (quantity <= 0) {

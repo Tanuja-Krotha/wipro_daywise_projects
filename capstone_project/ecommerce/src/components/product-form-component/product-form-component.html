@@ -84,7 +84,7 @@
               }
             </div>
 
-            <!-- Image URL Field - THIS IS THE IMPORTANT PART -->
+            <!-- Image URL Field -->
             <div class="mb-3">
               <label for="imageUrl" class="form-label">Image URL</label>
               <input
@@ -99,8 +99,12 @@
                 <div class="mt-2">
                   <label class="form-label">Image Preview</label>
                   <div class="image-preview-container">
-                    <img [src]="imagePreview" alt="Product preview" class="img-thumbnail preview-image"
-                         (error)="handleImageError($event)">
+                    <img 
+                      [src]="imagePreview" 
+                      alt="Product preview" 
+                      class="img-thumbnail preview-image"
+                      (error)="handleImageError($event)"
+                      (load)="handleImageLoad($event)">
                   </div>
                 </div>
               }

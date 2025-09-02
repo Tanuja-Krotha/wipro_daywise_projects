@@ -7,7 +7,7 @@ import { Order } from '../interfaces/order';
   providedIn: 'root'
 })
 export class OrderService {
-   private apiUrl = 'http://localhost:8083/orders'; // Corrected to 9191
+   private apiUrl = 'http://localhost:8083/orders'; 
 
   constructor(private http: HttpClient) { }
 

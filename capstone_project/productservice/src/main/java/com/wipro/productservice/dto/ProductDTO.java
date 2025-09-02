@@ -87,7 +87,7 @@ public class ProductDTO {
 			return imageUrl;
 		}
 
-		public void setImage(String imageUrl) {
+		public void setImageUrl(String imageUrl) {
 			this.imageUrl = imageUrl;
 		}
 

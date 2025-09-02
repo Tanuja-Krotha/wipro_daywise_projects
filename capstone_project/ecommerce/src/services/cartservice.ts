@@ -7,58 +7,58 @@ import { CartItem, CartItemDTO } from '../interfaces/cartitem';
   providedIn: 'root'
 })
 export class CartService {
-  private apiUrl = 'http://localhost:8083/carts';
+ private apiUrl = 'http://localhost:8083/carts';
   private cartItems = signal<CartItem[]>([]);
 
   constructor(private http: HttpClient) {}
 
+  // Fixed addToCart method
   addToCart(cartItemDTO: CartItemDTO): Observable<CartItem> {
-    return this.http.post<CartItem>('http://localhost:8083/carts/add', cartItemDTO).pipe(
+    return this.http.post<CartItem>(`${this.apiUrl}/add`, cartItemDTO).pipe(
       tap(newItem => {
         const currentItems = this.cartItems();
         const existingItemIndex = currentItems.findIndex(item => 
-          item.productId === newItem.productId
+          item.productId === newItem.productId && item.userId === newItem.userId
         );
         
         if (existingItemIndex > -1) {
-          currentItems[existingItemIndex].quantity += newItem.quantity;
+          // Update quantity if item already exists
+          const updatedItems = [...currentItems];
+          updatedItems[existingItemIndex] = newItem;
+          this.cartItems.set(updatedItems);
         } else {
-          currentItems.push(newItem);
+          // Add new item
+          this.cartItems.set([...currentItems, newItem]);
         }
-        
-        this.cartItems.set([...currentItems]);
       })
     );
   }
 
+  // Make sure all other methods are properly implemented
   removeFromCart(cartItemId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${cartItemId}`).pipe(
       tap(() => {
-        const currentItems = this.cartItems();
-        const updatedItems = currentItems.filter(item => item.id !== cartItemId);
+        const updatedItems = this.cartItems().filter(item => item.id !== cartItemId);
         this.cartItems.set(updatedItems);
       })
     );
   }
 
   updateCartItemQuantity(cartItemId: number, quantity: number): Observable<CartItem> {
-    return this.http.put<CartItem>(`${this.apiUrl}/${cartItemId}`, { quantity }).pipe(
+    // Note: Your backend expects quantity as a query parameter, not in body
+    return this.http.put<CartItem>(`${this.apiUrl}/${cartItemId}?quantity=${quantity}`, {}).pipe(
       tap(updatedItem => {
         const currentItems = this.cartItems();
-        const itemIndex = currentItems.findIndex(item => item.id === cartItemId);
-        
-        if (itemIndex > -1) {
-          currentItems[itemIndex] = updatedItem;
-          this.cartItems.set([...currentItems]);
-        }
+        const updatedItems = currentItems.map(item => 
+          item.id === cartItemId ? updatedItem : item
+        );
+        this.cartItems.set(updatedItems);
       })
     );
   }
 
   getCartByUserId(userId: number): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(`${this.apiUrl}/user/${userId}`).pipe(
-      tap(items => this.cartItems.set(items))
-    );
+    return this.http.get<CartItem[]>(`${this.apiUrl}/user/${userId}`);
   }
 
   clearCart(userId: number): Observable<void> {

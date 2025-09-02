@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product, ProductDTO } from '../interfaces/product';
@@ -19,30 +19,48 @@ import { Product, ProductDTO } from '../interfaces/product';
     return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
 
-  createProduct(productDTO: ProductDTO): Observable<Product> {
-    const formData = new FormData();
-    formData.append('name', productDTO.name);
-    formData.append('description', productDTO.description);
-    formData.append('price', productDTO.price.toString());
-    formData.append('quantity', productDTO.quantity.toString());
-    if (productDTO.imageUrl) {
-      formData.append('image', productDTO.imageUrl);
-    }
+  // createProduct(productDTO: ProductDTO): Observable<Product> {
+  //   const formData = new FormData();
+  //   formData.append('name', productDTO.name);
+  //   formData.append('description', productDTO.description);
+  //   formData.append('price', productDTO.price.toString());
+  //   formData.append('quantity', productDTO.quantity.toString());
+  //   if (productDTO.imageUrl) {
+  //     formData.append('image', productDTO.imageUrl);
+  //   }
 
-    return this.http.post<Product>(this.apiUrl, formData);
+  //   return this.http.post<Product>(this.apiUrl, formData);
+  // }
+
+  // updateProduct(id: number, productDTO: ProductDTO): Observable<Product> {
+  //   const formData = new FormData();
+  //   formData.append('name', productDTO.name);
+  //   formData.append('description', productDTO.description);
+  //   formData.append('price', productDTO.price.toString());
+  //   formData.append('quantity', productDTO.quantity.toString());
+  //   if (productDTO.imageUrl) {
+  //     formData.append('image', productDTO.imageUrl);
+  //   }
+
+  //   return this.http.put<Product>(`${this.apiUrl}/${id}`, formData);
+  // }
+
+  createProduct(productDTO: ProductDTO): Observable<Product> {
+    // Send as JSON, not FormData
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    
+    return this.http.post<Product>(this.apiUrl, productDTO, { headers });
   }
 
   updateProduct(id: number, productDTO: ProductDTO): Observable<Product> {
-    const formData = new FormData();
-    formData.append('name', productDTO.name);
-    formData.append('description', productDTO.description);
-    formData.append('price', productDTO.price.toString());
-    formData.append('quantity', productDTO.quantity.toString());
-    if (productDTO.imageUrl) {
-      formData.append('image', productDTO.imageUrl);
-    }
-
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, formData);
+    // Send as JSON, not FormData
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, productDTO, { headers });
   }
 
   deleteProduct(id: number): Observable<void> {

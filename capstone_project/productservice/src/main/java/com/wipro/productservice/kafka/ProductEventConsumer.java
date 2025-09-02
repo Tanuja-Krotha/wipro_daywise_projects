@@ -2,6 +2,7 @@ package com.wipro.productservice.kafka;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 
 import com.wipro.productservice.service.ProductService;
 
@@ -13,7 +14,7 @@ public class ProductEventConsumer {
 	public void consume(String message) {
 		String[] parts = message.split(":");
 		String type = parts[0];
-		Long productId = (long) Integer.parseInt(parts[1]);
+		Long productId = Long.parseLong(parts[1]);
 		int quantity = Integer.parseInt(parts[2]);
 		
 		if("ORDER_CREATED".equals(type)) {

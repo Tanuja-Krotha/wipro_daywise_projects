@@ -43,7 +43,7 @@ productForm: FormGroup;
       description: [''],
       price: [0, [Validators.required, Validators.min(0)]],
       quantity: [0, [Validators.required, Validators.min(0)]],
-      imageUrl: [''] // Simple URL input instead of file upload
+      imageUrl: ['']
     });
   }
 
@@ -66,24 +66,42 @@ productForm: FormGroup;
       }
     });
   }
-   handleImageError(event: Event): void {
+
+  handleImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;
     imgElement.style.display = 'none';
     
-    // Optional: Show error message
     const container = imgElement.parentElement;
     if (container) {
+      const existingError = container.querySelector('.image-error');
+      if (existingError) {
+        existingError.remove();
+      }
+      
       const errorDiv = document.createElement('div');
-      errorDiv.className = 'text-danger small mt-1';
+      errorDiv.className = 'image-error text-danger small mt-1';
       errorDiv.textContent = 'Failed to load image';
       container.appendChild(errorDiv);
+    }
+  }
+
+  handleImageLoad(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.style.display = 'block';
+    
+    const container = imgElement.parentElement;
+    if (container) {
+      const errorDiv = container.querySelector('.image-error');
+      if (errorDiv) {
+        errorDiv.remove();
+      }
     }
   }
 
   onSubmit(): void {
     if (this.productForm.valid) {
       this.isLoading = true;
-      const productData: Product = {
+      const productData: ProductDTO = {
         id: this.productId,
         ...this.productForm.value
       };
@@ -119,7 +137,6 @@ productForm: FormGroup;
     this.router.navigate(['/admin/products']);
   }
 
-  // Preview the image from URL
   get imagePreview(): string {
     return this.productForm.get('imageUrl')?.value || '';
   }
